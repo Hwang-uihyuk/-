@@ -3,6 +3,7 @@
 
 
 BFS 예제
+
 from collections import deque
 
 def bfs(graph, start, visited):
@@ -51,7 +52,7 @@ def dfs(x,y):
  
  
  <미로 탈출>
-  from collections import deque 
+ from collections import deque 
  
  n,m = map(int,input().split())
  for i in range(n):
