@@ -51,7 +51,7 @@ def dfs(x,y):
  
  
  <미로 탈출>
- from collections import deque 
+  from collections import deque 
  
  n,m = map(int,input().split())
  for i in range(n):
@@ -79,7 +79,6 @@ def dfs(x,y):
          return graph[n-1][m-1]
          
   print(bfs(0,0))
-  
   
   
   
