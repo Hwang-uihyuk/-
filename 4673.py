@@ -13,3 +13,4 @@ for i in range(1,10001):
 res = sorted(num-data)
 for i in res:  
     print(i)
+    
