@@ -1,10 +1,14 @@
 n = int(input())
 
 res = 0
+k = 1
 
-for i in range(n):
-    n = n - i
+while n > 0:
+    if n < k:
+        k = 1
+    n = n -k
+    k += 1
     res = res + 1
-    if n < i:
-        print(res)
+print(res)
+
     

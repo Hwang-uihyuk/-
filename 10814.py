@@ -9,3 +9,10 @@ array = sorted(array,key=lambda num:num[0])
 
 for j in array:
     print(j[0],j[1])
+
+
+
+
+
+
+
