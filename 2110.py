@@ -12,24 +12,24 @@ for i in range(n):
     array.append(int(input()))
 
 array.sort()
+                                    #이진 탐색은 sort된 상태에서 해야한다.
+def binary_search(array,start,end):   # def binary_search(array,start,end):
+    while start <= end:             # 반복문일때는 while start<end일때만 가능하다.
+        mid = (start + end) // 2    # mid = (start + end) // 2
+        current = array[0]          # current = array[0] 현재값이 current 값이다.
+        count = 1   # count = 1이다.
 
-def binary_search(array,start,end):
-    while start <= end:
-        mid = (start + end) // 2
-        current = array[0]
-        count = 1
+    for i in range(1,len(array)): #1부터 길이만큼 for문 돌려주는데
+        if array[i] >= current + mid : # array[i]가 currnet + mid 면 
+            count += 1 # count = count + 1 하나씩 할때마다 증가한다.
+            current = array[i]  #array[i]는 current 값이다.
 
-    for i in range(1,len(array)):
-        if array[i] >= current + mid :
-            count += 1
-            current = array[i]
-
-        if count >= c:
-            global answer
-            start = mid + 1
-            answer = mid
+        if count >= c:   #  count  값이 c 보다 크거나 같으면
+            global answer  # 글로벌 answer
+            start = mid + 1 # start가 미드값 + 1 이 된다.
+            answer = mid  # mid랑 answer이 같다고 둔다.
         else:
-            end = mid -1
+            end = mid -1 # end = mid - 1
 
 start = 1
 end = array[-1] - array[0]
