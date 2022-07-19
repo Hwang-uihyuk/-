@@ -1,26 +1,13 @@
-from stringprep import in_table_c11_c12
+words = input().upper()
+unique_words = list(set(words)) #중복을 없애주고 list로 바꿔준다.
 
-
-data = list(input())
-
-print(data)
-data.sort()
-
-print(data)
-for i in range(len(data)-1):
-    tmp = 0
-    res = 0
-    if data[i] == data[i+1]:
-        tmp += 1
-        for j in range(i+1,len(data)):
-            if data[i] == data[j]:
-                tmp +=1
-        if tmp == res:
-            print("?")
-            break 
-        if tmp>res:
-            res = tmp
-            i_res = i    
-
-
-print(data[i_res])
+cnt_list = []
+for x in unique_words :
+    cnt = words.count(x)
+    cnt_list.append(cnt)
+    
+if cnt_list.count(max(cnt_list)) > 1 : #중복될 경우
+    print("?")
+else : 
+    max_index = cnt_list.index(max(cnt_list))
+    print(unique_words[max_index])
