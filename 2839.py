@@ -1,31 +1,12 @@
-n = int(input())
+sugar = int(input())
 
-data = 0
-if n%3 == 0:
-    if n//5 >= 3:
-        data = n//5
-        n = n%5
-
-    if n%3 == 0:
-        data = data + n//3 
-        n = n%3
-
-
-# 이제 11 같은 수는 어떻게 해결할가 ?
-# 5 => 1번 
-# 3=>2 번
-# 13같은거는 5=> 2번 3=>1번
-# 14같은거는 5 => 1번 3=>3번
-# 그러면 5랑 3에 아무거나 곱해서 
-# 도 
-if n//5 >=3:
-    data = data + n//5
-    n = n%5
-
-
-
-
-if n!= 0:
-    print("-1")
-elif n == 0:
-    print(data)
+bag = 0
+while sugar >= 0 :
+    if sugar % 5 == 0 :  # 5의 배수이면
+        bag += (sugar // 5)  # 5로 나눈 몫을 구해야 정수가 됨
+        print(bag)
+        break
+    sugar -= 3  
+    bag += 1  # 5의 배수가 될 때까지 설탕-3, 봉지+1
+else :
+    print(-1)
