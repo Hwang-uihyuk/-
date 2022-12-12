@@ -5,7 +5,7 @@ https://www.acmicpc.net/user/weihyuk39
 <code>
 #### 기수정렬
 
-      from queue from Queue
+      from queue import Queue
       
       def radix_sort(A):
         queues = []
