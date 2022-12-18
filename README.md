@@ -87,7 +87,7 @@ https://www.acmicpc.net/user/weihyuk39
         for i in range(n+1):
                 # i는 0부터 60까지
 
-        for j in range(min(i,k)+1):
+            for j in range(min(i,k)+1):
                     #근까 왜 min을 써주는지 이해를 해야함 
                     # => 최대의 개수가 6임 그래서 넘어가면 
                     # i =  일때 , 
