@@ -80,14 +80,14 @@ https://www.acmicpc.net/user/weihyuk39
 
 - 7
 #### 이항계수
-               def bino_coef_dp(n,k):
-            C = [[-1 for _ in range(k+1)] for i in range(n+1)] #(2차원 테이블 : n은 열, k는 행) 5,3 하면
-            # 속에 있는 배열이 6개니까 [6,6,6,6,6] *  60개 
-            print(C)
-            for i in range(n+1):
+     def bino_coef_dp(n,k):
+        C = [[-1 for _ in range(k+1)] for i in range(n+1)] #(2차원 테이블 : n은 열, k는 행) 5,3 하면
+            # 속에 있는 배열이 6개니까 [-1,-1,-1,-1,-1,-1] *  60개 
+        print(C)
+        for i in range(n+1):
                 # i는 0부터 60까지
 
-                for j in range(min(i,k)+1):
+        for j in range(min(i,k)+1):
                     #근까 왜 min을 써주는지 이해를 해야함 
                     # => 최대의 개수가 6임 그래서 넘어가면 
                     # i =  일때 , 
@@ -100,10 +100,10 @@ https://www.acmicpc.net/user/weihyuk39
                     else:
                         C[i][j] = C[i-1][j-1] + C[i-1][j]
 
-            print("order : c", C)
-            return C[n][k]
+        print("order : c", C)
+        return C[n][k]
 
-        print(bino_coef_dp(60,5))
+     print(bino_coef_dp(60,5))
        
 #### 0-1 배낭 채우기 알고리즘(동적 계획법)
 
