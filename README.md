@@ -109,10 +109,73 @@ https://www.acmicpc.net/user/weihyuk39
 
 
 #### lcs
-      범준이가 준 코드 오류임.
+     def lcs_dp(X,Y):
+        x_list = list(X)
+        y_list = list(Y)
+        m = len(x_list) # m == 11
+        n = len(y_list) # n == 9
+
+        L = [[None]*(n+1) for _ in range(m+1)]  # L = 9 * 11 
+
+        for i in range(m+1):
+            # i = 1,2,3,4,5,6,7,8,9,10,11,12 Hello world
+          for j in range(n+1):
+              # j = 0,1,2,3,4,5,6,7,8,9 game over
+            if i == 0 or j == 0:
+              L[i][j] =0
+
+            elif X[i-1] == Y[j-1]:  
+              L[i][j] = L[i-1][j-1] + 1
+              # X[0] == 
+            else:
+              # 
+              L[i][j] = max(L[i][j-1], L[i-1][j])
+              print(L)
+        return L[m][n]
+      X = "hello world"
+      Y = "game over"
+
+      print(lcs_dp(X,Y))
       
 #### Floyd 최단경로 탐색 알고리즘
-        - 모르겠음
+      import copy
+
+      def shortest_path_floyd(vertex, W):
+        vsize = len(vertex)
+        D = copy.deepcopy(W)
+        # vsize == 6
+        for k in range(vsize):     #경유지
+          for i in range(vsize):   #출발지
+            for j in range(vsize): # 도착지
+                # k == 0  i == 1 // j == 2,3,4,5
+              if(D[i][k] + D[k][j]< D[i][j]):   #D[i][k] + D[k][j]#k라는 노드를 거쳐가는 노드   // #D[i][j] 다이렉트
+              # D[1][0] + D[0][2] < D[1][2]( B=>C)
+                D[i][j] = D[i][k] + D[k][j]
+          printD(D)
+
+      def printD(D):
+        vsize = len(D)
+        print("============================================")
+        for i in range(vsize):
+            for j in range(vsize):
+                if (D[i][j] == INF) : print(" INF ", end = "")
+                else: print("%4d "%D[i][j], end= "")
+            print("")
+
+      INF = 9999
+      vertex = ['A', 'B', 'C', 'D', 'E', 'F', 'G']
+      weight = [[0,7,INF, INF, 3, 10, INF],
+                [7,0,4,10,2,6,INF],
+                [INF,4,0,2,INF,INF,INF],
+                [INF, 10,2,0,11,9,4],
+                [3, 2,INF,11,0,13,5],
+                [10,6,INF,9,13,0,INF],
+                [INF,INF,INF,4,5,INF,0]]
+      shortest_path_floyd(vertex, weight)
+
+
+########################
+
 
 #### 편집 거리(동적 계획법, 메모제이션 사용)
         - 11.22 알고리즘 코드 오류 남 달라고 하기
