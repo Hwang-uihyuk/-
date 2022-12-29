@@ -1,6 +1,147 @@
 # Baekjoon
 
 
+
+# JavaScript
+
+- const filepath = process.platform === "linux" ? "/dev/stdin" : "./input.txt";
+    - 리눅스 환경일 때 아닐 때
+
+### 2798 블랙잭
+
+```jsx
+var fs = require('fs')
+var inputs = fs.readFileSync('./input.txt').toString().split('\n');
+// split('\n'을 기준으로 나뉜다.)
+
+var firstLine = inputs[0].split(" ")
+// 첫번째 라인은 5 21
+var secondLine = inputs[1].split(" ").map(item => parseInt(item))
+// 두번째 라인은 5 6 7 8 9
+
+var res = 0
+//결과값을 저장해줄 변수
+
+//세 개의 수를 뽑아서 21과 가장 근접한값을 뽑아야 함으로
+//일일이 모든 경우의 수를 다 더해야 한다.
+// 일명 : '브루트포스 알고리즘' 이라는것입니다.
+
+//총 3개의 for문을 돌려줍니다.
+//for문의 조건문에서는 i는 5개중 3번째 index까지만 가야 나머지 세가지의 수로 모든 경우의 수를 구할 수 있습니다.
+for(var i = 0; i < parseInt(firstLine[0]-2); i++)
+{
+    for (var j =i+1; j< parseInt(firstLine[0]-1); j++) 
+    {
+        for (var k = j+1; k<parseInt(firstLine[0]); k++)
+        {
+            //조건문에서는 21보다 작거나 같고 // 세 수를 더 한 값이 결과값에 계속 저장을 해줌으로써 가장 근접한 수를 찾아냅니다.
+            if( (secondLine[i]+secondLine[j]+secondLine[k]) <= firstLine[1] && res < secondLine[i]+secondLine[j]+secondLine[k])
+            {
+                res = secondLine[i]+secondLine[j]+secondLine[k]
+                
+            }
+        }
+    }
+}
+console.log(res)
+
+```
+
+### 
+
+### 10988 팰린드롬인지 확인하기
+
+```jsx
+var fs = require('fs')
+var filepath = process.platform === "linux" ? "/dev/stdin" : "./input.txt";
+var input = fs.readFileSync(filepath).toString().trim();
+
+console.log(input === input.split("").reverse().join("") ? 1: 0)
+
+// 입력값이 : levelsdf 일때 
+//split 까지만 쪼개면 ['l', 'e', 'v','e', 'l', 's','d', 'f']
+//reverse 하면 ['f', 'd', 's','l', 'e', 'v','e', 'l']
+//join 해주면 fdslevel
+```
+
+
+### 11057 오르막 수
+
+```jsx
+var fs = require('fs')
+var filepath = process.platform === "linux" ? "/dev/stdin" : "./input.txt";
+var input = fs.readFileSync(filepath).toString().trim()*1
+
+let dp = Array.from(Array(input+1), ()=> []);
+
+dp[1] = [1,1,1,1,1,1,1,1,1,1]
+dp[2] = [1,2,3,4,5,6,7,8,9,10];
+dp[3] = [1,3,6,10,15,21,28,36,45,55]
+for(let i = 4; i<=input; i++){
+    for(let j =0; j<10; j++){
+        dp[i][j] = 0;
+        for(let k =0; k<=j; k++){
+            dp[i][j] = (dp[i][j] + dp[i-1][k])%10007;
+        }
+    }   
+}
+console.log(dp[input].reduce((r,v) => {return (r+v) % 10007} , 0))
+```
+
+### 14248 점프 점프
+
+```jsx
+const input = require("fs").readFileSync('/dev/stdin').toString().split('\n')
+
+const bridge = Array.from({length: parseInt(input[0])}, (_, i) => i+1)
+const start = parseInt(input[2])
+const visited = []
+
+const jumps = input[1].split(' ').map(v => parseInt(v))
+
+const bfs = (pos) => {
+    if(pos <= -1 || pos > bridge.length - 1 || visited.includes(pos)) {
+       return;
+    }
+    visited.push(pos)
+    bfs(pos - jumps[pos])
+    bfs(pos + jumps[pos])
+}
+
+bfs(start - 1)
+
+console.log(visited.length)
+```
+
+### 14912숫자빈도수
+
+```jsx
+var fs = require('fs')
+var filepath = process.platform === "linux" ? "/dev/stdin" : "./input.txt";
+var input = fs.readFileSync(filepath).toString().split(' ')
+
+var N = parseInt(input[0])
+var d = parseInt(input[1])
+
+var arr= []
+var cnt = 0
+
+for(var i = 1; i <= N; i++){
+    arr.push(i)
+};
+//일단 배열을 하나생성해서, push해줍니다.
+let num = String(arr.join(''))
+//일단 배열에 있는 숫자들을 문자열로 만들어줍니다.
+let numArr = num.split('').map(n=>parseInt(n));
+//그 후에 다시 split함수를 써서 각 숫자들로 쪼개줍니다.
+for(let i = 0; i<num.length; i++){
+    if(numArr[i]===d)
+    cnt ++
+}
+//그리고 배열의 크기만큼 for문을 돌면서 그 숫자가 몇개들어있는지 세주면 됩니다.
+console.log(cnt)
+```
+
 https://www.acmicpc.net/user/weihyuk39
 <code>
 #### 기수정렬
